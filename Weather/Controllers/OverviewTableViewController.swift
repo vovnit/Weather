@@ -50,7 +50,7 @@ class OverviewTableViewController: UITableViewController {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func getDay(bySection section: Int) -> String {
         if section == 0 {
             return "Today"
         } else if section == 1 {
@@ -58,6 +58,10 @@ class OverviewTableViewController: UITableViewController {
         } else {
             return overviews[section].date
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return getDay(bySection: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,6 +85,7 @@ class OverviewTableViewController: UITableViewController {
         let detailedViewController: DetailedViewController = UIStoryboard(name: "Overview", bundle: nil).instantiateViewController(withIdentifier: "Details") as! DetailedViewController
         detailedViewController.dayNum = indexPath.section
         detailedViewController.network = network
+        detailedViewController.dayName = getDay(bySection: indexPath.section)
         navigationController?.pushViewController(detailedViewController, animated: true)
     }
 }

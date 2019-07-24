@@ -12,6 +12,7 @@ class DetailedViewController: UITableViewController {
     
     var viewModelManager = ViewModelManager<DetailedViewModel>()
     var network: Network?
+    var dayName: String?
     public var dayNum = 0
     var details: [DetailedViewModel] = [] {
         didSet {
@@ -21,7 +22,9 @@ class DetailedViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let dayName = dayName {
+            self.navigationItem.title = dayName
+        }
         tableView.allowsSelection = false
         viewModelManager.observableValue.add(observer: self) {[weak self] results in
             self?.details = results.getDay(number: self?.dayNum ?? 0)
