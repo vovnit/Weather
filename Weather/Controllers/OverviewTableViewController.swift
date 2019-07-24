@@ -18,12 +18,28 @@ class OverviewTableViewController: UITableViewController {
         }
     }
     
+    @objc func refresh()
+    {
+        viewModelManager.fetchOverviews(network: network, errorHandler: {[weak self] error in
+            guard let context = self else {
+                return
+            }
+            handle(error: error, onUIContext: context)
+        })
+        
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        
         viewModelManager.observableValue.add(observer: self) {[weak self] results in
             self?.overviews = results
         }
-        viewModelManager.fetchOverviews(network: network)
+        refresh()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,6 +80,7 @@ class OverviewTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailedViewController: DetailedViewController = UIStoryboard(name: "Overview", bundle: nil).instantiateViewController(withIdentifier: "Details") as! DetailedViewController
         detailedViewController.dayNum = indexPath.section
+        detailedViewController.network = network
         navigationController?.pushViewController(detailedViewController, animated: true)
     }
 }

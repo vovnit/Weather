@@ -12,6 +12,7 @@
 		DE245580DA678F9687832360 /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2454F082B5B9E0685819D9 /* ObservableValue.swift */; };
 		DE2458D021F64B811282A0B4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE245BC40FB0080F3DEEE209 /* Model.swift */; };
 		DE245FA1ADFC4A155AB33B90 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE245D6D873C57D1F7BED0F4 /* ViewModel.swift */; };
+		E710BE0322E8965F0025C444 /* ErrorHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E710BE0222E8965F0025C444 /* ErrorHandlers.swift */; };
 		E737163722E776C3001B1A01 /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737163622E776C3001B1A01 /* OverviewTableViewController.swift */; };
 		E737163A22E78909001B1A01 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737163922E78909001B1A01 /* WeatherModel.swift */; };
 		E737163D22E78F4A001B1A01 /* NSCountedSet-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E737163C22E78F4A001B1A01 /* NSCountedSet-extension.swift */; };
@@ -57,6 +58,7 @@
 		DE245B2866A763FFB222CEF4 /* DetailedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewModel.swift; sourceTree = "<group>"; };
 		DE245BC40FB0080F3DEEE209 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DE245D6D873C57D1F7BED0F4 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		E710BE0222E8965F0025C444 /* ErrorHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlers.swift; sourceTree = "<group>"; };
 		E737163622E776C3001B1A01 /* OverviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
 		E737163922E78909001B1A01 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		E737163C22E78F4A001B1A01 /* NSCountedSet-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCountedSet-extension.swift"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				E7CB3CE722E7C51400263F82 /* Degrees.swift */,
+				E710BE0222E8965F0025C444 /* ErrorHandlers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7CB3CD122E798F400263F82 /* Settings.swift in Sources */,
+				E710BE0322E8965F0025C444 /* ErrorHandlers.swift in Sources */,
 				E7CB3CD322E7994900263F82 /* NetworkError.swift in Sources */,
 				E737164022E78FE1001B1A01 /* Network.swift in Sources */,
 				E737163D22E78F4A001B1A01 /* NSCountedSet-extension.swift in Sources */,

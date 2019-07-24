@@ -13,11 +13,11 @@ extension Array where Element == WeatherModel {
         var days: [[WeatherModel]] = [[]]
         var sliceIt = 0
         for i in 0..<self.count {
-            days[sliceIt].append(self[i])
             if self[i].timeStr.contains("00:00:00") && i > 0 && i < self.count - 1 {
                 days.append([])
                 sliceIt += 1
             }
+            days[sliceIt].append(self[i])
         }
         return days.map { WeatherModel.aggregate(weatherModels: $0) }
     }
@@ -36,6 +36,6 @@ extension Array where Element == DetailedViewModel {
             }
             days[sliceIt].append(self[i])
         }
-        fatalError("Somehow requirement times weren't found")
+        return days[number]
     }
 }

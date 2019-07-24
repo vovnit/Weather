@@ -11,7 +11,7 @@ import UIKit
 class DetailedViewController: UITableViewController {
     
     var viewModelManager = ViewModelManager<DetailedViewModel>()
-    var network: Network = Network()
+    var network: Network?
     public var dayNum = 0
     var details: [DetailedViewModel] = [] {
         didSet {
@@ -26,7 +26,17 @@ class DetailedViewController: UITableViewController {
         viewModelManager.observableValue.add(observer: self) {[weak self] results in
             self?.details = results.getDay(number: self?.dayNum ?? 0)
         }
-        viewModelManager.fetchOverviews(network: network)
+        if let network = network {
+            viewModelManager.fetchCached(network: network)
+        } else {
+            self.network = Network()
+            viewModelManager.fetchOverviews(network: network!, errorHandler: {[weak self] error in
+                guard let context = self else {
+                    return
+                }
+                handle(error: error, onUIContext: context)
+            })
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

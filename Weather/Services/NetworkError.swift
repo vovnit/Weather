@@ -11,6 +11,5 @@ import Foundation
 typealias ErrorHandler = (NetworkError)->()
 
 enum NetworkError : Error {
-    case NetworkNil(String)
     case NetworkProcessError(String)
 }

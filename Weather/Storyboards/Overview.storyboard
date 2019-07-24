@@ -94,6 +94,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Taganrog" id="X8M-y4-z9p"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ldU-sk-E6W">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHf-Hu-Hde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -21,7 +21,7 @@ struct WeatherModel: Model {
         guard weatherModels.count > 0 else {
             return error
         }
-        return weatherModels.first(where: { $0.timeStr.contains("15:00:00") }) ?? error
+        return weatherModels.first(where: { $0.timeStr.contains("15:00:00") }) ?? WeatherModel.aggregateAverage(weatherModels: weatherModels)
     }
     
     static func aggregateAverage(weatherModels: [WeatherModel]) -> WeatherModel {

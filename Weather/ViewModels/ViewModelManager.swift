@@ -12,12 +12,16 @@ struct ViewModelManager<T: ViewModel> {
     
     var observableValue: ObservableValue<[T]> = ObservableValue<[T]>([])
     
+    func fetchCached(network: Network) {
+        observableValue.value = T.from(models: network.result)
+    }
+    
     func fetchOverviews(network: Network, errorHandler: ErrorHandler? = nil) {
         network.doRequest {(results, error) in
-            if !error.isEmpty {
+            if !error.isEmpty && !error.contains("cancelled") {
                 errorHandler?(.NetworkProcessError(error))
             }
-            if let results = results {
+            if let results = results, results.count > 0 {
                 self.observableValue.value = T.from(models: results)
             }
         }
