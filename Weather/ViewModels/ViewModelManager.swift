@@ -16,7 +16,7 @@ struct ViewModelManager<T: ViewModel> {
         observableValue.value = T.from(models: network.result)
     }
     
-    func fetchOverviews(network: Network, errorHandler: ErrorHandler? = nil) {
+    func fetchOverviews(network: Network, errorHandler: ErrorHandler? = nil, callback: (()->())? = nil) {
         network.doRequest {(results, error) in
             if !error.isEmpty && !error.contains("cancelled") {
                 errorHandler?(.NetworkProcessError(error))
@@ -24,6 +24,7 @@ struct ViewModelManager<T: ViewModel> {
             if let results = results, results.count > 0 {
                 self.observableValue.value = T.from(models: results)
             }
+            callback?()
         }
     }
 }

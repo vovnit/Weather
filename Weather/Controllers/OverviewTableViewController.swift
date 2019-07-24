@@ -25,10 +25,13 @@ class OverviewTableViewController: UITableViewController {
                 return
             }
             handle(error: error, onUIContext: context)
-        })
-        
-        self.tableView.reloadData()
-        self.refreshControl?.endRefreshing()
+            }, callback: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                    self.tableView.reloadData()
+                    self.refreshControl?.endRefreshing()
+                })
+            }
+        )
     }
     
     override func viewDidLoad() {
